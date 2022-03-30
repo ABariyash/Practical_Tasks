@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class TasksForCode {
 
@@ -100,47 +101,22 @@ public class TasksForCode {
         List<Integer> numbers = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             numbers.add((int) (Math.random() * 101) - 50);
-            System.out.println(numbers.get(i) + " <>");
         }
         return numbers;
     }
 
     public List<Integer> changeNegativeNumbersInCollection(List<Integer> collection) {
-        for (int i = 0; i < collection.size(); i++) {
-            if (collection.get(i) < 0) {
-                collection.set(i, collection.get(i) * -1);
-            }
-        }
-        return collection;
+        return collection.stream().map(x -> {if (x < 0) {x = x * -1;}return x;}).collect(Collectors.toList());
     }
 
     public List<Integer> changeEvenAndOddNumbersInCollection(List<Integer> collection) {
-        for (int i = 0; i < collection.size(); i++) {
-            if (collection.get(i) % 2 == 0) {
-                collection.set(i, collection.get(i) * 100);
-            } else {
-                collection.set(i, collection.get(i) - 100);
-            }
-        }
-        return collection;
+        return collection.stream().map(x -> {if (x % 2 == 0) {x = x * 100;} else {x = x - 100;}return x;})
+                        .collect(Collectors.toList());
     }
 
-    public List<String> returnLastNameStartWithA() {
-        List<String> lastName = new LinkedList<>();
-        lastName.add("Bariyash");
-        lastName.add("Sparrow");
-        lastName.add("Agar");
-        lastName.add("Abdullah");
-        List<String> list = new LinkedList<>();
-        for (int i = 0; i < lastName.size(); i++) {
-            if (lastName.get(i).startsWith("A")) {
-                list.add(lastName.get(i));
-            }
-        }
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i));
-        }
-        return list;
+    public List<String> returnLastNameStartWithA(String... lastName) {
+        Stream<String> stream = Arrays.stream(lastName).sequential();
+        return stream.filter(name -> name.startsWith("A")).collect(Collectors.toList());
     }
 
 }

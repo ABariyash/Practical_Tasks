@@ -13,10 +13,10 @@ public class Runner {
         tasksForCode.isStringPalindromeFirsMethod("Комок");
         tasksForCode.isStringPalindromeSecondMethod("Комок");
         tasksForCode.isWordAnAnagram("Нора", "Рано");
-        tasksForCode.calculateFactorial(5);
+        tasksForCode.calculateNumberFibonacci(5);
         tasksForCode.calculateFactorial(5);
         tasksForCode.changeNegativeNumbersInCollection(TasksForCode.createCollectionOfIntegers());
         tasksForCode.changeEvenAndOddNumbersInCollection(TasksForCode.createCollectionOfIntegers());
-        tasksForCode.returnLastNameStartWithA();
+        tasksForCode.returnLastNameStartWithA("Bariyash", "Sparrow", "Agar", "Abdullah");
     }
 }
